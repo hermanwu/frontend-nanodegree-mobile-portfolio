@@ -550,8 +550,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   //Declare the elem variable (var elem;) outside the loop, so it is not created every time
   //the loop is executed
-  var elem = document.createElement('img');
+  var elem;
   for (var i = 0; i < 48; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
