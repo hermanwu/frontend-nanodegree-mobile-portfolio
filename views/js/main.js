@@ -454,15 +454,17 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    /* Create a temporary array to store all ".randomPizzaContainer" classes, which reduces DOM
+    /* Create a temporary array to store all "randomPizzaContainer" classes, which reduces DOM
      * manipulation in the loop
      */
-    var randomPizzaContainerArray = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizzaContainerArray = document.getElementsByClassName("randomPizzaContainer");
     // Since all pizza pictures' size are same, only the first one is selected for dx calcuation
     var dx = determineDx(randomPizzaContainerArray[0], size);
     // Calculate the new width for all pizzas since they all have the same new width
     var newwidth = (randomPizzaContainerArray[0].offsetWidth + dx) + 'px';
-    for (var i = 0; i < randomPizzaContainerArray.length; i++) {
+    // Store the length of the array as a local variable
+    var containerArrayLength = randomPizzaContainerArray.length;
+    for (var i = 0; i < containerArrayLength; i++) {
       randomPizzaContainerArray[i].style.width = newwidth;
     }
   }
@@ -513,7 +515,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   // Store all mover classes into one variable, so they do not need to be called
   // in the loop
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName("mover");
   // Calculate this fixed variable to avoid calculating it in the loop
   var documentBodyScrollTop = document.body.scrollTop / 1250;
   // Since there are only five different phases, it is easily to create an array
@@ -539,22 +541,24 @@ function updatePositions() {
   }
 }
 
-// runs updatePositions on scroll
+// Runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  //Declare the elem variable (var elem;) outside the loop, so it is not created every time
+  //the loop is executed
+  var elem = document.createElement('img');
   for (var i = 0; i < 48; i++) {
-    var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
