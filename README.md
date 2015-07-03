@@ -14,12 +14,12 @@
 
 ## Optimization have done for pizza.html page
 
-1. Ensure a consistent frame rate at 60 fps when scrolling in pizza.html.
+### Ensure a consistent frame rate at 60 fps when scrolling in pizza.html.
 
 - Store all mover classes into one variable, so they do not need to be called in the loop
 - Calculate and store documentBodyScrollTop as a local variable to avoid calculating it in the loop
 
-2. Time to resize pizzas is less than 5 ms
+### Time to resize pizzas is less than 5 ms
 
 - Create a temporary array to store all "randomPizzaContainer" classes, which reduces DOM manipulation in the loop
 - Since all pizza pictures' size are same, only the first one is selected for dx calcuation
