@@ -1,0 +1,2 @@
+cd C:\Program Files\ImageMagick-6.9.1-Q16
+convert G:\dropbox\Dropbox\websites\frontend-nanodegree-mobile-portfolio\views\images\pizzeria.jpg -resize 25%% G:\dropbox\Dropbox\websites\frontend-nanodegree-mobile-portfolio\views\images\pizzeria.webp
